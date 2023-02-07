@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Supply_chain_test_project"
+        tools:targetApi="31">
+        <activity android:name=".productTrackingScreen_3"
+            android:parentActivityName=".ConsumerScreen"></activity>
+        <activity android:name=".productTrackingScreen_2"
+            android:parentActivityName=".ConsumerScreen"></activity>
+        <activity android:name=".productTrackingScreen_1"
+            android:parentActivityName=".ConsumerScreen"></activity>
+        <activity android:name=".ShipmentTrackingScreen_3"
+            android:parentActivityName=".FarmerScreen"></activity>
+        <activity android:name=".ShipmentTrackingScreen_2"
+            android:parentActivityName=".FarmerScreen"></activity>
+        <activity android:name=".ShipmentTrackingScreen_1"
+            android:parentActivityName=".FarmerScreen"></activity>
+        <activity android:name=".FarmerScreen"
+            android:parentActivityName=".WelcomeScreen"></activity>
+        <activity android:name=".ConsumerScreen"
+            android:parentActivityName=".WelcomeScreen"></activity>
+        <activity
+            android:name=".WelcomeScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    tools:context=".ConsumerScreen">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text='Choose product to see location and estimated time of arival'
+        android:layout_gravity='center'
+        android:gravity='center'
+        android:textSize='15pt'
+        android:layout_marginBottom='20pt'
+        android:textStyle='bold'
+        android:textColor='@color/black'
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation='horizontal'
+        >
+
+
+        <ImageButton
+            android:layout_width="50pt"
+            android:layout_height="50pt"
+            android:scaleType='fitCenter'
+            android:adjustViewBounds="true"
+            android:src='@drawable/groceries_image'
+            android:id='@+id/groceriesImage_1'>
+        </ImageButton>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='Product #1'
+            android:gravity='center'
+            android:layout_gravity="center"
+            android:textSize='15pt'
+            android:textStyle='bold'
+            android:id='@+id/groceries_text_1'>
+        </TextView>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation='horizontal'
+        android:layout_marginTop='20dp'>
+
+
+        <ImageButton
+            android:layout_width="50pt"
+            android:layout_height="50pt"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:src='@drawable/groceries_image'
+            android:id='@+id/groceriesImage_2'>
+        </ImageButton>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='Product #2'
+            android:gravity='center'
+            android:layout_gravity="center"
+            android:textSize='15pt'
+            android:textStyle='bold'
+            android:id='@+id/groceries_text_2'
+            >
+        </TextView>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation='horizontal'
+        android:layout_marginTop='20dp'>
+
+
+        <ImageButton
+            android:layout_width="50pt"
+            android:layout_height="50pt"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src='@drawable/groceries_image'
+            android:id='@+id/groceriesImage_3'>
+        </ImageButton>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='Product #3'
+            android:gravity='center'
+            android:layout_gravity="center"
+            android:textSize='15pt'
+            android:textStyle='bold'
+            android:id='@+id/groceries_text_3'>
+        </TextView>
+    </LinearLayout>
+
+</LinearLayout>

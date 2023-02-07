@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    tools:context=".FarmerScreen">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text='Select shipment number to see arrival time and location'
+        android:layout_gravity='center'
+        android:gravity='center'
+        android:textSize='14pt'
+        android:textStyle='bold'
+        android:layout_marginBottom='10pt'
+        android:textColor='@color/black'
+
+
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop='20dp'
+        android:orientation="horizontal"
+        android:id='@+id/shipment_1'
+        android:clickable="true">
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src='@drawable/semi_truck'
+            android:id='@+id/semiTruckImage_1'>
+        </ImageButton>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize='12pt'
+            android:textStyle='bold'
+            android:gravity='center'
+            android:text="Shipment #1"
+            android:clickable="true"
+            android:id='@+id/shipment_text_1'>
+
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop='20dp'
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src='@drawable/semi_truck'
+            android:id='@+id/semiTruckImage_2'>
+        </ImageButton>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize='12pt'
+            android:textStyle='bold'
+            android:gravity='center'
+            android:text="Shipment #2"
+            android:clickable="true"
+            android:id='@+id/shipment_text_2'>
+
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop='20dp'
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src='@drawable/semi_truck'
+            android:id='@+id/semiTruckImage_3'>
+        </ImageButton>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize='12pt'
+            android:textStyle='bold'
+            android:gravity='center'
+            android:text="Shipment #3"
+            android:clickable="true"
+            android:id='@+id/shipment_text_3'>
+
+        </TextView>
+    </LinearLayout>
+
+</LinearLayout>
