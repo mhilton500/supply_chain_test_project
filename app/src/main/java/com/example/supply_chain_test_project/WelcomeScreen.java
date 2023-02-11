@@ -17,6 +17,8 @@ public class WelcomeScreen extends AppCompatActivity {
         ImageView farmPic = findViewById(R.id.farmImage);
         ImageView truckPic = findViewById(R.id.truckImage);
 
+        //ImageView mapPic = findViewById(R.id.mapImage);
+
 
         farmPic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,6 +30,11 @@ public class WelcomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {openConsumerScreen();}
         });
+
+        //mapPic.setOnClickListener(new View.OnClickListener() {
+            //@Override
+           // public void onClick(View view) {openGoogleMapTestScreen();}
+        //});
 
     }
 
@@ -42,6 +49,12 @@ public class WelcomeScreen extends AppCompatActivity {
 
         startActivity(intent);
     }
+
+    //public void openGoogleMapTestScreen() {
+        //Intent intent = new Intent(this, GoogleMapTestScreen.class);
+
+        //startActivity(intent);
+    //}
 
 
 }

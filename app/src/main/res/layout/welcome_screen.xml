@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center_horizontal"
-        android:text="Supply Chain Management"
+        android:text="Food Tracking App"
         android:textColor='@color/black'
         android:textSize='25pt'
         android:textStyle='bold'
@@ -76,6 +76,7 @@
                 android:textStyle='bold'/>
 
         </LinearLayout>
+
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

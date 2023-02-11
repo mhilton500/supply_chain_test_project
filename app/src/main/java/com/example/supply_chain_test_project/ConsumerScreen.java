@@ -63,6 +63,8 @@ public class ConsumerScreen extends AppCompatActivity  {
 
     }
 
+
+    // Directs to a google maps page
     public void openProductTrackingScreen_1() {
         Intent intent = new Intent(this, productTrackingScreen_1.class);
 

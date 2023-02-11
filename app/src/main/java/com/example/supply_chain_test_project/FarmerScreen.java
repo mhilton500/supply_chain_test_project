@@ -69,7 +69,7 @@ public class FarmerScreen extends AppCompatActivity  {
 
     }
 
-    //Methods to open shipment tracking screens 1-3
+    //Methods to open shipment tracking screens 1-3 | goes to a google maps page
     public void openShipmentTrackingScreen_1() {
         Intent intent = new Intent(this, ShipmentTrackingScreen_1.class);
 
