@@ -33,19 +33,13 @@ public class ShipmentTrackingScreen_1 extends AppCompatActivity implements OnMap
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        float zoomLevel = 12.0f; //This goes up to 21
         googleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(40.69,-80.30))
                 .title("Marker"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(40.69,-80.30)));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.69,-80.30),zoomLevel));
 
     }
 
-
-    //   @Override
-    //   public void onMapReady(GoogleMap googleMap) {
-    //      googleMap .addMarker(new MarkerOptions()
-    //             .position(new LatLng(0,0))
-    //             .title("Marker"));
-    // }
 }
 
