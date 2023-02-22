@@ -16,6 +16,7 @@ public class ConsumerScreen extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.consumer_screen);
 
+        // store UI elements in variables
         ImageView groceriesImage_1 = findViewById(R.id.groceriesImage_1);
         TextView groceriesText_1 = findViewById(R.id.groceries_text_1);
 
@@ -24,6 +25,9 @@ public class ConsumerScreen extends AppCompatActivity  {
 
         ImageView groceriesImage_3 = findViewById(R.id.groceriesImage_3);
         TextView groceriesText_3 = findViewById(R.id.groceries_text_3);
+
+        // use Volley to get json data for food nodes
+
 
 
         // on click listeners for shipping and tracking images and texts
