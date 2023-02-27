@@ -1,8 +1,11 @@
 package com.example.supply_chain_test_project;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
@@ -33,20 +36,11 @@ public class ConsumerScreen extends AppCompatActivity  {
         // store UI elements in variables
         LinearLayout consumerLayout = findViewById(R.id.consumer_layout);
 
-        ImageView groceriesImage_1 = findViewById(R.id.groceriesImage_1);
-        TextView groceriesText_1 = findViewById(R.id.groceries_text_1);
-
-        ImageView groceriesImage_2 = findViewById(R.id.groceriesImage_2);
-        TextView groceriesText_2 = findViewById(R.id.groceries_text_2);
-
-        ImageView groceriesImage_3 = findViewById(R.id.groceriesImage_3);
-        TextView groceriesText_3 = findViewById(R.id.groceries_text_3);
 
         // use Volley to get json data for food nodes
         RequestQueue queue = Volley.newRequestQueue(ConsumerScreen.this);
         String url = "http://10.0.2.2:3000/nodes/food";
 
-        groceriesText_1.setText("This is a test");
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -72,17 +66,31 @@ public class ConsumerScreen extends AppCompatActivity  {
                         // image
                         ImageButton imageButton = new ImageButton(ConsumerScreen.this);
                         imageButton.setImageResource(R.drawable.groceries_image);
-                        imageButton.setMaxWidth(50);
-                        imageButton.setMaxHeight(50);
 
                         // text
                         TextView textView = new TextView(ConsumerScreen.this);
                         textView.setText(foodName);
-
+                        textView.setTextSize(TypedValue.COMPLEX_UNIT_PT, 15);
+                        textView.setTypeface(null, Typeface.BOLD);
 
                         // add imageButton and textView to linearLayout
                         linearLayout.addView(imageButton);
                         linearLayout.addView(textView);
+
+                        // add onClick listener to linearLayout and image
+                        imageButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                openProductTrackingScreen_1(); //FIXME: use real values
+                            }
+                        });
+
+                        linearLayout.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                openProductTrackingScreen_1(); //FIXME: use real values
+                            }
+                        });
 
                         // add linearLayout to ConsumerScreen
                         consumerLayout.addView(linearLayout);
@@ -91,14 +99,12 @@ public class ConsumerScreen extends AppCompatActivity  {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    groceriesText_1.setText("JSONException");
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
-                groceriesText_1.setText("Response Error");
             }
         });
 
@@ -106,37 +112,12 @@ public class ConsumerScreen extends AppCompatActivity  {
 
 
         // on click listeners for shipping and tracking images and texts
-        groceriesImage_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {openProductTrackingScreen_1();}
-        });
-
-        groceriesText_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {openProductTrackingScreen_1();}
-        });
+        //groceriesImage_1.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View view) {openProductTrackingScreen_1();}
+        //});
 
 
-        groceriesImage_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {openProductTrackingScreen_2();}
-        });
-
-        groceriesText_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {openProductTrackingScreen_2();}
-        });
-
-
-        groceriesImage_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {openProductTrackingScreen_3();}
-        });
-
-        groceriesText_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {openProductTrackingScreen_3();}
-        });
 
 
 
