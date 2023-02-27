@@ -67,11 +67,15 @@ public class ConsumerScreen extends AppCompatActivity  {
                         // create UI elements
                         // linearLayout will hold an ImageButton and TextView
                         LinearLayout linearLayout = new LinearLayout(ConsumerScreen.this);
-                        //linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
 
+                        // image
                         ImageButton imageButton = new ImageButton(ConsumerScreen.this);
                         imageButton.setImageResource(R.drawable.groceries_image);
+                        imageButton.setMaxWidth(50);
+                        imageButton.setMaxHeight(50);
 
+                        // text
                         TextView textView = new TextView(ConsumerScreen.this);
                         textView.setText(foodName);
 
