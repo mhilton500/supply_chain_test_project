@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +31,8 @@ public class ConsumerScreen extends AppCompatActivity  {
         setContentView(R.layout.consumer_screen);
 
         // store UI elements in variables
+        LinearLayout consumerLayout = findViewById(R.id.consumer_layout);
+
         ImageView groceriesImage_1 = findViewById(R.id.groceriesImage_1);
         TextView groceriesText_1 = findViewById(R.id.groceries_text_1);
 
@@ -51,18 +55,35 @@ public class ConsumerScreen extends AppCompatActivity  {
                 double longitude = 0;
 
                 try {
-                    // get first json object in array (just one food for now)
-                    // array index 0, _fields -> properties -> latitude or longitude -> low?
-                    JSONObject object = response.getJSONObject(0);
-                    JSONArray fields = object.getJSONArray("_fields");
-                    JSONObject properties = fields.getJSONObject(0).getJSONObject("properties");
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject object = response.getJSONObject(i);
+                        JSONObject properties = object.getJSONArray("_fields").getJSONObject(0).getJSONObject("properties");
 
-                    foodName = properties.getString("name");
-                    latitude = properties.getJSONObject("latitude").getDouble("low");
-                    longitude = properties.getJSONObject("longitude").getDouble("low");
+                        // get values from JSON
+                        foodName = properties.getString("name");
+                        latitude = properties.getJSONObject("latitude").getDouble("low");
+                        longitude = properties.getJSONObject("longitude").getDouble("low");
 
-                    // set name for first listing
-                    groceriesText_1.setText(foodName);
+                        // create UI elements
+                        // linearLayout will hold an ImageButton and TextView
+                        LinearLayout linearLayout = new LinearLayout(ConsumerScreen.this);
+                        //linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+                        ImageButton imageButton = new ImageButton(ConsumerScreen.this);
+                        imageButton.setImageResource(R.drawable.groceries_image);
+
+                        TextView textView = new TextView(ConsumerScreen.this);
+                        textView.setText(foodName);
+
+
+                        // add imageButton and textView to linearLayout
+                        linearLayout.addView(imageButton);
+                        linearLayout.addView(textView);
+
+                        // add linearLayout to ConsumerScreen
+                        consumerLayout.addView(linearLayout);
+                    }
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
