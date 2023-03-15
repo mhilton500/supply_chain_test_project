@@ -1,14 +1,28 @@
 package com.example.supply_chain_test_project;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class FarmerScreen extends AppCompatActivity  {
 
@@ -17,55 +31,80 @@ public class FarmerScreen extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farmer_screen);
 
-        ImageView semiTruckImage_1 = findViewById(R.id.semiTruckImage_1);
-        TextView shipmentText_1 = findViewById(R.id.shipment_text_1);
+        // store UI elements in variables
+        LinearLayout farmerLayout = findViewById(R.id.farmer_layout);
 
-        ImageView semiTruckImage_2 = findViewById(R.id.semiTruckImage_2);
-        TextView shipmentText_2 = findViewById(R.id.shipment_text_2);
+        // use Volley to get farm node json data
+        RequestQueue queue = Volley.newRequestQueue(FarmerScreen.this);
+        String url = "https://10.0.2.2:3000/nodes/farm";
 
-        ImageView semiTruckImage_3 = findViewById(R.id.semiTruckImage_3);
-        TextView shipmentText_3 = findViewById(R.id.shipment_text_3);
-
-
-        // on click listeners for shipment tracking image and text #1
-        semiTruckImage_1.setOnClickListener(new View.OnClickListener() {
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
-            public void onClick(View view) {openShipmentTrackingScreen_1();}
+            public void onResponse(JSONArray response) {
+                String farmName = "";
+                double latitude = 0;
+                double longitude = 0;
+
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject object = response.getJSONObject(i);
+                        JSONObject properties = object.getJSONArray("_fields").getJSONObject(0).getJSONObject("properties");
+
+                        // get values from JSON
+                        farmName = properties.getString("name");
+                        latitude = properties.getJSONObject("latitude").getDouble("low");
+                        longitude = properties.getJSONObject("longitude").getDouble("low");
+
+                        // create UI elements
+                        // linearLayout will hold an ImageButton and TextView
+                        LinearLayout linearLayout = new LinearLayout(FarmerScreen.this);
+                        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+                        // image
+                        ImageButton imageButton = new ImageButton(FarmerScreen.this);
+                        imageButton.setImageResource(R.drawable.groceries_image);
+
+                        // text
+                        TextView textView = new TextView(FarmerScreen.this);
+                        textView.setText(farmName);
+                        textView.setTextSize(TypedValue.COMPLEX_UNIT_PT, 15);
+                        textView.setTypeface(null, Typeface.BOLD);
+
+                        // add imageButton and textView to linearLayout
+                        linearLayout.addView(imageButton);
+                        linearLayout.addView(textView);
+
+                        // add onClick listener to linearLayout and image
+                        imageButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                openShipmentTrackingScreen_1(); //FIXME: use real values
+                            }
+                        });
+
+                        linearLayout.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                openShipmentTrackingScreen_1(); //FIXME: use real values
+                            }
+                        });
+
+                        // add linearLayout to ConsumerScreen
+                        farmerLayout.addView(linearLayout);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    throw new RuntimeException(e);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
         });
 
-        shipmentText_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {openShipmentTrackingScreen_1();}
-        });
-
-
-        // on click listeners for shipment tracking image and text #2
-        semiTruckImage_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {openShipmentTrackingScreen_2();}
-        });
-
-        shipmentText_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {openShipmentTrackingScreen_2();}
-        });
-
-
-        // on click listeners for shipment tracking image and text #3
-        semiTruckImage_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {openShipmentTrackingScreen_3();}
-        });
-
-        shipmentText_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {openShipmentTrackingScreen_3();}
-        });
-
-
-
-
-
+        queue.add(request);
 
     }
 
