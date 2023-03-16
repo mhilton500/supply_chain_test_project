@@ -3,6 +3,7 @@ package com.example.supply_chain_test_project;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,7 +37,7 @@ public class FarmerScreen extends AppCompatActivity  {
 
         // use Volley to get farm node json data
         RequestQueue queue = Volley.newRequestQueue(FarmerScreen.this);
-        String url = "https://10.0.2.2:3000/nodes/farm";
+        String url = "http://10.0.2.2:3000/nodes/supplier";
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
@@ -52,8 +53,8 @@ public class FarmerScreen extends AppCompatActivity  {
 
                         // get values from JSON
                         farmName = properties.getString("name");
-                        latitude = properties.getJSONObject("latitude").getDouble("low");
-                        longitude = properties.getJSONObject("longitude").getDouble("low");
+                        //latitude = properties.getJSONObject("latitude").getDouble("low");
+                        //longitude = properties.getJSONObject("longitude").getDouble("low");
 
                         // create UI elements
                         // linearLayout will hold an ImageButton and TextView
