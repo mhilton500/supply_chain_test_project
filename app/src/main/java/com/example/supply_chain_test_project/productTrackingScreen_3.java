@@ -74,9 +74,11 @@ public class productTrackingScreen_3 extends AppCompatActivity implements OnMapR
                 .title("Destination 1")
         );
 
+        //Marker indication driver and ETA
         Marker marker_2 = googleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(40.691273, -80.285494))
-                .title("Product en Route to Destination")
+                .title("Driver 1 | ETA: 5:00 min")
+
         );
 
         //loads screen to desired marker and zoom level
